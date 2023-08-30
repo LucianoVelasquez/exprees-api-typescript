@@ -10,19 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tipogas {
-  id Int @id @default(autoincrement())
-  electric Boolean
-  gasoil Boolean
-  gas Item?
-}
-
 model Item {
   id Int @id @default(autoincrement())
+  name String
   color String
-  gas Tipogas @relation(fields: [tipogasId], references: [id])
-  tipogasId Int @unique
+  gas String?
   year String
-  description String
+  description String?
   preci Int
 }
